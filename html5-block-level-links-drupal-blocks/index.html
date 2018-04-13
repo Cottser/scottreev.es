@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+<!-- Mirrored from scottreev.es/html5-block-level-links-drupal-blocks by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 20:20:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="../sites/default/files/favicon/index.ico" type="image/vnd.microsoft.icon" />
+<link rel="canonical" href="index.html" />
+<link rel="shortlink" href="index.html" />
+  <title>HTML5 block-level links for Drupal blocks | Scott Reeves</title>
+  <link type="text/css" rel="stylesheet" href="../sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/css/css_sdyyIuqV_D0sgcuYxlQjQRjXrhAHul_ByaHN6dBpqGw/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/css/css_7R577oMS4cSXMKmhPWrnoZgq6iut-vYvP77fhCusy6c/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400italic,400,700|Lato|Inconsolata" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/css/css_MV40ffLcpIy7KDn-KTc0kUcFIX3cYia2xSERfnfF7us/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/css/css_kQIHW8IK05QcGoiSDUbtiixB0pjbcFlzvvbXhazGTv8/index.css" media="all" />
+  <script type="text/javascript" src="/sites/default/files/js/js_UWQINlriydSoeSiGQxToOUdv493zEa7dpsXC1OtYlZU/index.js"></script>
+<script type="text/javascript" src="/sites/default/files/js/js_JvoCK6J4Oqu8yaspRhg59lHcx6LPBC2e7sqNRaV-aWk/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"writer","theme_token":"A2QOHYq-YgidgCwG_LwJ2h9xapvj4fb_xTrITi9jZBA","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/writer\/js\/script.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/custom\/codefilter\/codefilter.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"http:\/\/fonts.googleapis.com\/css?family=Merriweather:400italic,400,700|Lato|Inconsolata":1,"sites\/all\/themes\/writer\/css\/style.css":1,"sites\/all\/themes\/writer\/css\/simple-format.css":1}}});
+//--><!]]>
+</script>
+
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1 node-type-blog" >
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+
+<div id="wrapper">
+    <header id="site-header">
+  	<div class="head-wrap clearfix">
+	    <h1 id="site-name">
+	     <a href="../index.html">Scott Reeves</a>
+	    </h1>
+      <nav id="main-nav">
+              </nav>
+	  </div>
+	  <div class="region region-header">
+    <div id="block-block-1" class="block block-block">
+
+
+  <div class="content">
+    <p>Notes about web development from Scott Reeves aka <a href="http://twitter.com/Cottser">@Cottser</a>.</p>
+  </div>
+</div>
+  </div>
+  </header>
+    <section class="main-content">
+  	  	<a id="main-content"></a>
+  	    <h1 class="title" id="page-title">HTML5 block-level links for Drupal blocks</h1>        <div class="tabs"></div>              <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+
+  <div class="content">
+    <div id="node-1" class="node node-blog node-promoted clearfix">
+
+      <div class="meta">
+            <time class="submitted date" datetime="2011-09-23 21:36:04">23 Sep 2011</time>
+          </div>
+    <div class="content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>If you find yourself wanting to link the entire content of a block in your Drupal 7 site, try this recipe. Note that this is only valid markup if you're using an HTML5 doctype. For more on block-level links, see the <a href="http://html5doctor.com/block-level-links-in-html-5/">write-up on HTML5 Doctor</a>.</p>
+
+<p>First, install the <a href="http://drupal.org/project/block_titlelink">Block Title Link</a> module. Once enabled, you should see a new fieldset on all your block edit forms.</p>
+
+<p><img src="/sites/default/files/posts/2012/block-title-link-fieldset/index.png" alt="Block Title Link fieldset" /></p>
+
+<p>Then edit your theme's block.tpl.php template. You may need to copy block.tpl.php from modules/block/block.tpl.php or your parent theme.</p>
+
+<pre><code class="language-clike">
+&lt;?php /* Replace this: */ ?&gt;
+
+&lt;?php print $content; ?&gt;
+
+&lt;?php /* With this: */ ?&gt;
+
+&lt;?php if (isset($block-&gt;title_link)): ?&gt;
+  &lt;?php print l($content, $block-&gt;title_link, array(&#039;attributes&#039; =&gt; array(&#039;title&#039; =&gt; $block-&gt;title_link_title), &#039;html&#039; =&gt; TRUE)); ?&gt;
+&lt;?php else: ?&gt;
+  &lt;?php print $content; ?&gt;
+&lt;?php endif; ?&gt;
+</code></pre>
+
+<p>Clear your cache if you didn't already have a block.tpl.php in your theme, and you're done.</p>
+
+<p>You could also link only the content of the block and not the title of the block by unchecking "Display Link". Many possibilities here.</p>
+
+<p>This could very easily be adapted for Drupal 6 as well. I believe the main difference would be <code class="language-clike">$block->content</code> instead of <code class="language-clike">$content</code> in your block template.</p>
+</div></div></div>    </div>
+          </div>
+  </div>
+</div>
+  </div>
+  </section>
+
+</div> <!-- end wrapper -->
+  </body>
+
+<!-- Mirrored from scottreev.es/html5-block-level-links-drupal-blocks by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 20:20:58 GMT -->
+</html>

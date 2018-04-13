@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+<!-- Mirrored from scottreev.es/transmit-applescript-duplicate-current-tab by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 20:20:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="/sites/default/files/favicon/index.ico" type="image/vnd.microsoft.icon" />
+<link rel="canonical" href="index.html" />
+<link rel="shortlink" href="index.html" />
+  <title>Transmit AppleScript - Duplicate current tab | Scott Reeves</title>
+  <link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_sdyyIuqV_D0sgcuYxlQjQRjXrhAHul_ByaHN6dBpqGw/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_7R577oMS4cSXMKmhPWrnoZgq6iut-vYvP77fhCusy6c/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400italic,400,700|Lato|Inconsolata" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_MV40ffLcpIy7KDn-KTc0kUcFIX3cYia2xSERfnfF7us/index.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/css/css_kQIHW8IK05QcGoiSDUbtiixB0pjbcFlzvvbXhazGTv8/index.css" media="all" />
+  <script type="text/javascript" src="/sites/default/files/js/js_UWQINlriydSoeSiGQxToOUdv493zEa7dpsXC1OtYlZU/index.js"></script>
+<script type="text/javascript" src="/sites/default/files/js/js_JvoCK6J4Oqu8yaspRhg59lHcx6LPBC2e7sqNRaV-aWk/index.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"writer","theme_token":"hs8CpPsuHl_211UD0ry5PeT7QUx1wJlJJYv3Wdap2lY","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/writer\/js\/script.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/custom\/codefilter\/codefilter.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"http:\/\/fonts.googleapis.com\/css?family=Merriweather:400italic,400,700|Lato|Inconsolata":1,"sites\/all\/themes\/writer\/css\/style.css":1,"sites\/all\/themes\/writer\/css\/simple-format.css":1}}});
+//--><!]]>
+</script>
+
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2 node-type-blog" >
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+
+<div id="wrapper">
+    <header id="site-header">
+  	<div class="head-wrap clearfix">
+	    <h1 id="site-name">
+	     <a href="#">Scott Reeves</a>
+	    </h1>
+      <nav id="main-nav">
+              </nav>
+	  </div>
+	  <div class="region region-header">
+    <div id="block-block-1" class="block block-block">
+
+
+  <div class="content">
+    <p>Notes about web development from Scott Reeves aka <a href="http://twitter.com/Cottser">@Cottser</a>.</p>
+  </div>
+</div>
+  </div>
+  </header>
+    <section class="main-content">
+  	  	<a id="main-content"></a>
+  	    <h1 class="title" id="page-title">Transmit AppleScript - Duplicate current tab</h1>        <div class="tabs"></div>              <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+
+  <div class="content">
+    <div id="node-2" class="node node-blog node-promoted clearfix">
+
+      <div class="meta">
+            <time class="submitted date" datetime="2011-09-22 19:29:09">22 Sep 2011</time>
+          </div>
+    <div class="content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>I often find myself wanting more than one tab connected to a server in Transmit 4, and it's a bit painful (for a keyboard junkie) to navigate up a directory then right click and choose "Open in New Tab". If there were a menu item for Open in New Tab, I probably would have used something like Keyboard Maestro to accomplish this rather than AppleScript.
+Save this script and create a hotkey with your favorite app - Spark, Keyboard Maestro, FastScripts, etc. I used Cmd-Shift-T.</p>
+
+<p>You must be connected to a favorite for this to work. When triggered, the script should connect to your current favorite at the same path in a new tab.</p>
+
+<pre><code language="applescript">
+tell application "Transmit"
+    set theBrowser to remote browser of current tab of document 1
+    set thePath to root path of theBrowser
+    set theFavorite to favorite of theBrowser
+
+    set current tab of document 1 to (make new tab at end of document 1)
+    tell current tab of document 1
+        connect to theFavorite
+        change location of remote browser to path thePath
+    end tell
+end tell
+</code></pre>
+</div></div></div>    </div>
+          </div>
+  </div>
+</div>
+  </div>
+  </section>
+
+</div> <!-- end wrapper -->
+  </body>
+
+<!-- Mirrored from scottreev.es/transmit-applescript-duplicate-current-tab by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Apr 2018 20:20:59 GMT -->
+</html>
